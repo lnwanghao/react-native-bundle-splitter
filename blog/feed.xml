@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+    <channel>
+        <title>React Native Bundle Splitter Blog</title>
+        <link>https://kirillzyusko.github.io/react-native-bundle-splitter/blog</link>
+        <description>The best place to stay up-to-date with the latest React Native Bundle Splitter news and events.</description>
+        <lastBuildDate>Tue, 13 Aug 2019 06:00:00 GMT</lastBuildDate>
+        <docs>http://blogs.law.harvard.edu/tech/rss</docs>
+        <generator>Feed for Node.js</generator>
+        <image>
+            <title>React Native Bundle Splitter Blog</title>
+            <url>https://kirillzyusko.github.io/react-native-bundle-splitter/img/favicon.ico</url>
+            <link>https://kirillzyusko.github.io/react-native-bundle-splitter/blog</link>
+        </image>
+        <copyright>Copyright © 2020</copyright>
+        <item>
+            <title><![CDATA[Version 1.0.0 is released]]></title>
+            <link>https://kirillzyusko.github.io/react-native-bundle-splitter/blog/2019/08/13/new-version-1.0.0.html</link>
+            <guid>https://kirillzyusko.github.io/react-native-bundle-splitter/blog/2019/08/13/new-version-1.0.0.html</guid>
+            <pubDate>Tue, 13 Aug 2019 06:00:00 GMT</pubDate>
+            <description><![CDATA[<p>Version 1.0.0 is release! Documentation on this site will be posted as soon as it will be ready (will be published in parts).</p> ]]></description>
+        </item>
+    </channel>
+</rss>

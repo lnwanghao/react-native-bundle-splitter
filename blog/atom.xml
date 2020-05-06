@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://kirillzyusko.github.io/react-native-bundle-splitter/blog</id>
+    <title>React Native Bundle Splitter Blog</title>
+    <updated>2019-08-13T06:00:00Z</updated>
+    <generator>Feed for Node.js</generator>
+    <link rel="alternate" href="https://kirillzyusko.github.io/react-native-bundle-splitter/blog"/>
+    <subtitle>The best place to stay up-to-date with the latest React Native Bundle Splitter news and events.</subtitle>
+    <logo>https://kirillzyusko.github.io/react-native-bundle-splitter/img/favicon.ico</logo>
+    <rights>Copyright © 2020</rights>
+    <entry>
+        <title type="html"><![CDATA[Version 1.0.0 is released]]></title>
+        <id>https://kirillzyusko.github.io/react-native-bundle-splitter/blog/2019/08/13/new-version-1.0.0.html</id>
+        <link href="https://kirillzyusko.github.io/react-native-bundle-splitter/blog/2019/08/13/new-version-1.0.0.html">
+        </link>
+        <updated>2019-08-13T06:00:00Z</updated>
+        <summary type="html"><![CDATA[<p>Version 1.0.0 is release! Documentation on this site will be posted as soon as it will be ready (will be published in parts).</p> ]]></summary>
+        <author>
+            <name>Kiryl Ziusko</name>
+        </author>
+    </entry>
+</feed>
