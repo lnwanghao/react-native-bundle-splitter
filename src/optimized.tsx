@@ -9,53 +9,63 @@ type State = {
 };
 
 const optimized = (screenName: string): any => {
-  class OptimizedComponent extends React.PureComponent<Props, State> {
-    private component: React.ElementType | null = null;
-    private placeholder: React.ElementType | null = mapLoadable[screenName].placeholder;
+  let { func, require: _func } = mapLoadable[screenName];
+  if (func) {
+    const cached = isCached(screenName);
+    if (cached) {
+      _func = getComponent(screenName).require;
+      return _func;
+    }
+    return _func;
+  } else {
+    class OptimizedComponent extends React.PureComponent<Props, State> {
+      private component: React.ElementType | null = null;
+      private placeholder: React.ElementType | null = mapLoadable[screenName].placeholder;
 
-    constructor(props: Props) {
-      super(props);
-      const cached = isCached(screenName);
+      constructor(props: Props) {
+        super(props);
+        const cached = isCached(screenName);
 
-      if (cached) {
-        const { component } = getComponent(screenName);
-        this.component = component;
+        if (cached) {
+          const { component } = getComponent(screenName);
+          this.component = component;
+        }
+
+        this.state = {
+          needsExpensive: cached
+        };
       }
 
-      this.state = {
-        needsExpensive: cached
-      };
-    }
+      public componentDidMount(): void {
+        if (this.component === null) {
+          const { component } = getComponent(screenName);
+          this.component = component;
 
-    public componentDidMount(): void {
-      if (this.component === null) {
-        const { component } = getComponent(screenName);
-        this.component = component;
+          this.setState({ needsExpensive: true });
+        }
+      }
 
-        this.setState({ needsExpensive: true });
+      public render(): React.ReactNode {
+        const BundleComponent = this.component;
+        const Placeholder = this.placeholder;
+        const PlaceholderComponent = Placeholder ? <Placeholder /> : Placeholder;
+
+        return this.state.needsExpensive && BundleComponent ?
+          <BundleComponent {...this.props} /> : PlaceholderComponent;
       }
     }
 
-    public render(): React.ReactNode {
-      const BundleComponent = this.component;
-      const Placeholder = this.placeholder;
-      const PlaceholderComponent = Placeholder ? <Placeholder /> : Placeholder;
+    const registerData = mapLoadable[screenName];
 
-      return this.state.needsExpensive && BundleComponent ?
-        <BundleComponent {...this.props} /> : PlaceholderComponent;
+    if (registerData.static) {
+      Object.keys(registerData.static).forEach((key: string) => {
+        // @ts-ignore
+        OptimizedComponent[key] = registerData.static[key];
+      });
     }
+
+    return OptimizedComponent;
   }
-
-  const registerData = mapLoadable[screenName];
-
-  if (registerData.static) {
-    Object.keys(registerData.static).forEach((key: string) => {
-      // @ts-ignore
-      OptimizedComponent[key] = registerData.static[key];
-    });
-  }
-
-  return OptimizedComponent;
 };
 
 export default optimized;

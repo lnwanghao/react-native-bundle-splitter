@@ -3,6 +3,7 @@ import * as React from 'react';
 export type PreLoadable = {
     name?: string;
     require: () => ({});
+    func?: boolean;
     group?: string;
     static?: object;
 };
